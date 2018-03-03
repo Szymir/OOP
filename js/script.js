@@ -1,19 +1,19 @@
 $(function(){
-	var samsungGalaxyS6 = new Phone("Samsung", 3250, "black");
-	var iPhone6S = new Phone("Apple", 2250, "silver");
-	var onePlusOne = new Phone("onePlus", 1250, "blue");
+	var btn1 = new Button('Hello!');
 
-	function Phone(brand, price, color) {
-    this.brand = brand;
-    this.price = price;
-    this.color = color;
+	function Button(text) {
+		this.text = text || 'Hello';
 	}
 
-	Phone.prototype.printInfo = function() {
-		console.log("The phone brand is " + this.brand + ", color is " + this.color + " and the price is " + this.price + ".");
-	}
+	Button.prototype.create = function() {
+		var self = this;
+		this.$element = $('<button>');
+		this.$element.text(this.text);
+		this.$element.click(function() {
+			alert(self.text);
+		});
+		$('body').append(this.$element);
+	};
 
-	samsungGalaxyS6.printInfo();
-	iPhone6S.printInfo();
-	onePlusOne.printInfo();
+	btn1.create();
 })
